@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Saya</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Lora", serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        color: #1c2526;
+        line-height: 1.8;
+        padding-top: 80px;
+        background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+      }
+
+      nav {
+        background: #4b5563;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #374151;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 1.5rem 0;
+      }
+
+      nav ul li {
+        margin: 0 2.5rem;
+        position: relative;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #f8fafc;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        padding: 0.5rem;
+        min-height: 44px;
+        line-height: 1.5;
+      }
+
+      nav ul li a:hover,
+      nav ul li a:active {
+        color: #eab308;
+        transform: translateY(-2px);
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #eab308, #f59e0b);
+        bottom: -8px;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover::after,
+      nav ul li a:active::after {
+        width: 100%;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 35px;
+        height: 30px;
+        cursor: pointer;
+        margin: 1.2rem;
+        transition: transform 0.3s ease;
+        min-height: 44px;
+      }
+
+      .hamburger:hover,
+      .hamburger:active {
+        transform: scale(1.15);
+      }
+
+      .hamburger span {
+        width: 100%;
+        height: 4px;
+        background-color: #f8fafc;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+
+      section {
+        padding: 8rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      h1 {
+        font-family: "Cinzel", serif;
+        color: #1c2526;
+      }
+
+      h2 {
+        font-family: "Cinzel", serif;
+        color: #f8fafc;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      #about h2 {
+        color: #000000;
+      }
+
+      #about {
+        background: linear-gradient(145deg, #fef3c7, #f8fafc);
+        padding: 5rem 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        position: relative;
+      }
+
+      #about::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.2) 0%,
+          transparent 70%
+        );
+        opacity: 0.3;
+      }
+
+      .about-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-text {
+        flex: 1;
+        max-width: 650px;
+        text-align: left;
+      }
+
+      .profile-slideshow {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        flex-shrink: 0;
+        perspective: 1000px;
+      }
+
+      .profile-pic {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid #eab308;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+        will-change: opacity, transform;
+      }
+
+      .profile-pic.active {
+        opacity: 1;
+        transform: translateZ(0);
+      }
+
+      .name {
+        font-family: "Cinzel", serif;
+        font-size: 5rem;
+        color: #1c2526;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .description-slideshow {
+        position: relative;
+        min-height: 120px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+      }
+
+      .description-text {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        width: calc(100% - 3rem);
+        opacity: 0;
+        color: #1c2526;
+        font-size: 1.2rem;
+        font-style: italic;
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        transform: translateY(20px);
+        will-change: opacity, transform;
+      }
+
+      .description-text.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      #skills {
+        text-align: center;
+        background: rgba(15, 23, 42, 0.8);
+        padding: 6rem 2rem;
+        border-radius: 20px;
+        margin: 4rem auto;
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+
+      .skill-bar {
+        background: linear-gradient(145deg, #fef3c7, #f8fafc);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        width: 350px;
+        text-align: left;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-bar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .skill-bar:hover::before {
+        left: 100%;
+      }
+
+      .skill-bar:hover,
+      .skill-bar:active {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .skill-bar h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        color: #1c2526;
+      }
+
+      .progress {
+        background-color: #e5e7eb;
+        border-radius: 10px;
+        height: 30px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .progress-bar {
+        background: linear-gradient(to right, #eab308, #f59e0b);
+        height: 100%;
+        width: 0;
+        transition: width 1.5s ease-in-out;
+      }
+
+      #experience {
+        text-align: center;
+        background: rgba(15, 23, 42, 0.8);
+        padding: 6rem 2rem;
+        border-radius: 20px;
+        margin: 4rem auto;
+      }
+
+      .experience-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+
+      .experience-card {
+        background: linear-gradient(145deg, #fef3c7, #f8fafc);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        width: 350px;
+        text-align: left;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+        position: relative;
+      }
+
+      .experience-card:hover,
+      .experience-card:active {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .experience-card h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1.6rem;
+        color: #1c2526;
+        margin-bottom: 0.8rem;
+      }
+
+      .experience-card .period {
+        font-size: 1.2rem;
+        color: #eab308;
+        margin-bottom: 0.8rem;
+        font-style: italic;
+      }
+
+      .experience-card p {
+        font-size: 1.1rem;
+        color: #1c2526;
+      }
+
+      #contact {
+        text-align: center;
+        background: rgba(15, 23, 42, 0.8);
+        padding: 6rem 2rem;
+        border-radius: 20px;
+        margin: 4rem auto;
+      }
+
+      .contact-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .contact-info {
+        background: linear-gradient(145deg, #fef3c7, #f8fafc);
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 1200px;
+        text-align: left;
+      }
+
+      .contact-info h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        color: #1c2526;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-info p {
+        font-size: 1.2rem;
+        color: #1c2526;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .contact-info a {
+        color: #eab308;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-info a:hover,
+      .contact-info a:active {
+        color: #f59e0b;
+      }
+
+      .contact-form {
+        background: linear-gradient(145deg, #fef3c7, #f8fafc);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 1200px;
+        text-align: left;
+      }
+
+      .contact-form h3 {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        color: #1c2526;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-form label {
+        display: block;
+        font-size: 1.2rem;
+        color: #1c2526;
+        margin-bottom: 0.6rem;
+        font-weight: 700;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        color: #1c2526;
+        background: rgba(255, 255, 255, 0.9);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #eab308;
+        box-shadow: 0 0 8px rgba(234, 179, 8, 0.3);
+        outline: none;
+      }
+
+      .contact-form button {
+        background: linear-gradient(to right, #eab308, #f59e0b);
+        color: #1c2526;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-family: "Cinzel", serif;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        min-height: 44px;
+      }
+
+      .contact-form button:hover,
+      .contact-form button:active {
+        background: linear-gradient(to right, #f59e0b, #d97706);
+        transform: translateY(-2px);
+      }
+
+      .form-message {
+        display: none;
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+
+      .form-message.success {
+        color: #10b981;
+      }
+
+      .form-message.error {
+        color: #ef4444;
+      }
+
+      footer {
+        text-align: center;
+        padding: 4rem;
+        background: #0f172a;
+        color: #eab308;
+        margin-top: 4rem;
+        font-size: 1.2rem;
+        font-family: "Cinzel", serif;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-content {
+        background: linear-gradient(145deg, #fef3c7, #f8fafc);
+        padding: 3rem;
+        border-radius: 15px;
+        max-width: 600px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        transform: scale(0.8);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .popup.active .popup-content {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .popup-content h3 {
+        font-family: "Cinzel", serif;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: #1c2526;
+      }
+
+      .popup-content p {
+        font-size: 1.2rem;
+        color: #1c2526;
+        margin-bottom: 1.5rem;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: #1c2526;
+        cursor: pointer;
+        background: none;
+        border: none;
+        transition: color 0.3s ease;
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      .close-btn:hover,
+      .close-btn:active {
+        color: #eab308;
+      }
+
+      .decorative-divider {
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #eab308,
+          transparent
+        );
+        margin: 2rem auto;
+      }
+
+      @media (hover: none) {
+        .skill-bar:hover::before,
+        .skill-bar:hover,
+        .experience-card:hover,
+        nav ul li a:hover::after,
+        .contact-form button:hover,
+        .contact-info a:hover,
+        .close-btn:hover,
+        nav ul li a:hover {
+          transform: none;
+          box-shadow: none;
+          left: initial;
+          width: initial;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        section {
+          padding: 6rem 2rem;
+        }
+
+        .about-container {
+          gap: 2rem;
+        }
+
+        .profile-slideshow {
+          width: 300px;
+          height: 300px;
+        }
+
+        .name {
+          font-size: 4rem;
+        }
+
+        h2 {
+          font-size: 2.5rem;
+        }
+
+        .skills-container,
+        .experience-container {
+          gap: 2rem;
+        }
+
+        .skill-bar,
+        .experience-card {
+          width: 320px;
+        }
+
+        .contact-info,
+        .contact-form {
+          padding: 2.5rem;
+          max-width: 600px;
+        }
+
+        .description-text {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        nav {
+          padding: 0.5rem;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          background: #4b5563;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          padding: 2rem 0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          transform: translateX(-100%);
+          opacity: 0;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        nav ul.active {
+          display: flex;
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        nav ul li {
+          margin: 1rem 0;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul.active li {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        nav ul.active li:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        nav ul.active li:nth-child(2) {
+          transition-delay: 0.2s;
+        }
+        nav ul.active li:nth-child(3) {
+          transition-delay: 0.3s;
+        }
+        nav ul.active li:nth-child(4) {
+          transition-delay: 0.4s;
+        }
+
+        section {
+          padding: 5rem 1.5rem;
+        }
+
+        .about-container {
+          flex-direction: column-reverse;
+          align-items: center;
+          gap: 1.5rem;
+        }
+
+        .about-text {
+          text-align: center;
+          max-width: 100%;
+        }
+
+        .profile-slideshow {
+          width: 250px;
+          height: 250px;
+        }
+
+        .name {
+          font-size: 3rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .skills-container,
+        .experience-container {
+          gap: 1.5rem;
+        }
+
+        .skill-bar,
+        .experience-card {
+          width: 100%;
+          max-width: 340px;
+        }
+
+        .contact-info,
+        .contact-form {
+          padding: 2rem;
+          max-width: 340px;
+        }
+
+        .description-text {
+          font-size: 1rem;
+        }
+
+        .contact-info p,
+        .contact-form label,
+        .contact-form input,
+        .contact-form textarea {
+          font-size: 1rem;
+        }
+
+        .contact-form button {
+          font-size: 1.1rem;
+          padding: 0.8rem 1.5rem;
+        }
+
+        .popup-content {
+          padding: 2rem;
+          max-width: 90%;
+        }
+
+        .popup-content h3 {
+          font-size: 1.6rem;
+        }
+
+        .popup-content p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="hamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="#about">Tentang Saya</a></li>
+        <li><a href="#skills">Skill</a></li>
+        <li><a href="#experience">Pengalaman Kerja</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <section id="about">
+      <div class="about-container">
+        <div class="about-text">
+          <h1 class="name">Bagus Pamungkas</h1>
+          <h2>Tentang Saya</h2>
+          <div class="decorative-divider"></div>
+          <div class="description-slideshow">
+            <p class="description-text active">
+              Saya lahir di Cirebon pada tanggal 27 Juni 2008. Saya adalah
+              pribadi yang memiliki semangat belajar tinggi dan tidak mudah
+              menyerah dalam menghadapi tantangan.
+            </p>
+            <p class="description-text">
+              Saya menempuh pendidikan dasar di SDN Kesunean 1, melanjutkan ke
+              SMP Negeri 16 Kota Cirebon, dan saat ini menjalani studi kejuruan
+              di SMK Wahidin Cirebon, mengasah keterampilan teknologi dan
+              profesional.
+            </p>
+            <p class="description-text">
+              Saya menyukai pekerjaan yang membutuhkan ketelitian, kecepatan,
+              dan ketepatan, serta selalu berusaha memberikan hasil terbaik
+              secara efisien dan tepat waktu.
+            </p>
+            <p class="description-text">
+              Saya bersemangat untuk terus mengembangkan keterampilan teknologi
+              dan berkontribusi dalam proyek-proyek inovatif yang berdampak.
+            </p>
+          </div>
+        </div>
+        <div class="profile-slideshow">
+          <img
+            src="foto/profil1.png"
+            alt="Foto Profil 1"
+            class="profile-pic active"
+          />
+          <img src="foto/profil2.png" alt="Foto Profil 2" class="profile-pic" />
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skill Saya</h2>
+      <div class="decorative-divider"></div>
+      <div class="skills-container">
+        <div
+          class="skill-bar"
+          data-description="Mampu membuat website yang responsif dan menarik dengan HTML5 dan CSS3."
+        >
+          <h3>HTML & CSS</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 95%"></div>
+          </div>
+        </div>
+        <div
+          class="skill-bar"
+          data-description="Pengembangan aplikasi web menggunakan Bahasa Pemrograman PHP."
+        >
+          <h3>PHP</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 80%"></div>
+          </div>
+        </div>
+        <div
+          class="skill-bar"
+          data-description="Menguasai Microsoft Word, Excel, dan PowerPoint dengan sangat terampil."
+        >
+          <h3>Microsoft Office</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 95%"></div>
+          </div>
+        </div>
+        <div
+          class="skill-bar"
+          data-description="Mampu mengedit video yang fleksibel menggunakan Premiere Pro."
+        >
+          <h3>Premiere Pro</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 70%"></div>
+          </div>
+        </div>
+        <div
+          class="skill-bar"
+          data-description="Mampu mengedit short video dengan cepat menggunakan CapCut."
+        >
+          <h3>CapCut</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 80%"></div>
+          </div>
+        </div>
+        <div
+          class="skill-bar"
+          data-description="Menguasai keterampilan berbasis script di dalam Artificial Intelligence."
+        >
+          <h3>Script Writing AI</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Pengalaman Kerja</h2>
+      <div class="decorative-divider"></div>
+      <div class="experience-container">
+        <div class="experience-card">
+          <h3>Developed Website - UIN SIBER Syekh Nurjati Cirebon</h3>
+          <div class="period">Agustus 2024 - November 2024</div>
+          <p>
+            Membantu mengembangkan website PPG FITK di UINSSC menggunakan
+            WordPress untuk website jurusan.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Kontak Saya</h2>
+      <div class="decorative-divider"></div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Informasi Kontak</h3>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <span
+              >Email:
+              <a href="mailto:bagaspamungkas436@gmail.com"
+                >bagaspamungkas436@gmail.com</a
+              ></span
+            >
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            <span
+              >Telepon:
+              <a href="https://wa.me/6287876480267">+62 878-7648-0267</a></span
+            >
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <span
+              >Alamat: Jl. Kesunean Utara RT.07/RW.07 Kec. Lemahwungkuk Kel.
+              Kasepuhan Kota Cirebon, Indonesia</span
+            >
+          </p>
+        </div>
+        <div class="contact-form">
+          <h3>Kirim Pesan</h3>
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/mblyjqod"
+            method="POST"
+          >
+            <div>
+              <label for="name">Nama</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nama Anda"
+                required
+              />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Anda"
+                required
+              />
+            </div>
+            <div>
+              <label for="message">Pesan</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Pesan Anda"
+                required
+              ></textarea>
+            </div>
+            <button type="submit">Kirim Pesan</button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Bagus Pamungkas. All Rights Reserved.</p>
+    </footer>
+
+    <div class="popup" id="skillPopup">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">×</button>
+        <h3 id="popupTitle"></h3>
+        <p id="popupDescription"></p>
+      </div>
+    </div>
+
+    <script>
+      // Smooth scroll untuk navigasi dengan offset untuk navbar
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          const navbarHeight = 80;
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            navbarHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+          document.querySelector("nav ul").classList.remove("active");
+          document.querySelector(".hamburger").classList.remove("open");
+        });
+      });
+
+      // Toggle hamburger menu
+      document
+        .querySelector(".hamburger")
+        .addEventListener("click", function () {
+          this.classList.toggle("open");
+          document.querySelector("nav ul").classList.toggle("active");
+        });
+
+      // Animasi fade-in dan fade-out saat scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = "translateY(0)";
+              if (entry.target.classList.contains("skill-bar")) {
+                const progressBar = entry.target.querySelector(".progress-bar");
+                const width = progressBar.style.width;
+                progressBar.style.width = "0";
+                setTimeout(() => {
+                  progressBar.style.width = width;
+                }, 100);
+              }
+            } else {
+              entry.target.style.opacity = 0.2;
+              entry.target.style.transform = "translateY(20px)";
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      // Kecualikan footer dari animasi fade-out
+      document
+        .querySelectorAll(
+          ".skill-bar, .experience-card, .profile-slideshow, .contact-info, .contact-form"
+        )
+        .forEach((item) => {
+          item.style.opacity = 0.2;
+          item.style.transform = "translateY(20px)";
+          item.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+          observer.observe(item);
+        });
+
+      // Slideshow untuk foto profil
+      const profilePics = document.querySelectorAll(".profile-pic");
+      let currentPic = 0;
+
+      function showNextPic() {
+        profilePics[currentPic].classList.remove("active");
+        currentPic = (currentPic + 1) % profilePics.length;
+        profilePics[currentPic].classList.add("active");
+      }
+
+      // Slideshow untuk deskripsi
+      const descriptionTexts = document.querySelectorAll(".description-text");
+      let currentDescription = 0;
+
+      function showNextDescription() {
+        descriptionTexts[currentDescription].classList.remove("active");
+        currentDescription = (currentDescription + 1) % descriptionTexts.length;
+        descriptionTexts[currentDescription].classList.add("active");
+      }
+
+      // Ganti gambar dan deskripsi setiap 4 detik
+      setInterval(() => {
+        showNextPic();
+        showNextDescription();
+      }, 4000);
+
+      // Pastikan elemen pertama terlihat saat halaman dimuat
+      profilePics[currentPic].classList.add("active");
+      descriptionTexts[currentDescription].classList.add("active");
+
+      // Pop-up untuk skill
+      const popup = document.getElementById("skillPopup");
+      const popupTitle = document.getElementById("popupTitle");
+      const popupDescription = document.getElementById("popupDescription");
+
+      document.querySelectorAll(".skill-bar").forEach((skill) => {
+        skill.addEventListener("click", function () {
+          popupTitle.textContent = this.querySelector("h3").textContent;
+          popupDescription.textContent = this.getAttribute("data-description");
+          popup.style.display = "flex";
+          setTimeout(() => popup.classList.add("active"), 10);
+        });
+      });
+
+      function closePopup() {
+        popup.classList.remove("active");
+        setTimeout(() => (popup.style.display = "none"), 400);
+      }
+
+      popup.addEventListener("click", function (e) {
+        if (e.target === popup) {
+          closePopup();
+        }
+      });
+
+      // Penanganan pengiriman formulir dengan Formspree
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const form = e.target;
+          const formMessage = document.getElementById("formMessage");
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          })
+            .then((response) => {
+              if (response.ok) {
+                formMessage.textContent =
+                  "Pesan berhasil dikirim! Terima kasih telah menghubungi.";
+                formMessage.className = "form-message success";
+                formMessage.style.display = "block";
+                form.reset();
+                setTimeout(() => {
+                  formMessage.style.display = "none";
+                }, 5000);
+              } else {
+                return response.json().then((data) => {
+                  throw new Error(data.error || "Gagal mengirim pesan.");
+                });
+              }
+            })
+            .catch((error) => {
+              formMessage.textContent = "Terjadi kesalahan: " + error.message;
+              formMessage.className = "form-message error";
+              formMessage.style.display = "block";
+            });
+        });
+    </script>
+  </body>
+</html>
